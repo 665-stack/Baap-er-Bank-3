@@ -2,7 +2,7 @@ function getInputValue(inputId) {
     const inputField = document.getElementById(inputId);
     const inputAmountText = inputField.value;
     const amountValue = parseFloat(inputAmountText);
-    //clean deposit input after deposit btn is clicked
+    //clear deposit input after deposit btn is clicked
     inputField.value = '';
     return amountValue;
 }
@@ -29,7 +29,6 @@ function updateBalance(amount, isAdd) {
         balanceTotal.innerText = previousBalanceTotal - amount;
     }
 }
-
 //handle deposit button
 document.getElementById('deposit-button').addEventListener('click', function () {
     const depositAmount = getInputValue('deposit-input');
@@ -37,17 +36,18 @@ document.getElementById('deposit-button').addEventListener('click', function () 
         updateTotalField('deposit-total', depositAmount);
         updateBalance(depositAmount, true);
     }
-
 })
 //handle withdraw button
 document.getElementById('withdraw-button').addEventListener('click', function () {
     const withdrawAmount = getInputValue('withdraw-input');
+    console.log(withdrawAmount)
     const currentBalance = getCurrentBalance();
     if (withdrawAmount > 0 && withdrawAmount < currentBalance) {
-        updateTotalField('withdraw-total', withdrawAmount);
+        updateTotalField('withdraw-total', withdrawAmount)
         updateBalance(withdrawAmount, false);
     }
     if (withdrawAmount > currentBalance) {
-        alert('Insufficient Balance');
+        alert('Insufficient Balance')
     }
 })
+
